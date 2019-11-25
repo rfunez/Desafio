@@ -1,0 +1,57 @@
+usuario->postgres
+clave->postgres
+
+usuario->raul
+pwd->raul
+
+BD->desafio
+
+Creacion BD
+
+create database desafio;
+
+create user raul with password 'raul';
+
+*TABELA DE MEMBROS
+
+CREATE TABLE public.membros
+(
+    nome_membro character varying(50) COLLATE pg_catalog."default",
+    cargo character varying(50) COLLATE pg_catalog."default",
+    nome_projeto character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT membros_nome_projeto_fkey FOREIGN KEY (nome_projeto)
+        REFERENCES public.projetos (nome_projeto) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.membros
+    OWNER to raul;
+
+
+* TABLELA de PROJETOS
+
+CREATE TABLE public.projetos
+(
+    data_ini date NOT NULL,
+    duracao integer NOT NULL,
+    data_fim date NOT NULL,
+    orcamento real NOT NULL,
+    descricao text COLLATE pg_catalog."default",
+    status character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    nome_projeto character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    gerente character varying(20) COLLATE pg_catalog."default",
+    CONSTRAINT pk_projeto PRIMARY KEY (nome_projeto)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.projetos
+    OWNER to raul;
