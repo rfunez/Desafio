@@ -1,5 +1,5 @@
-usuario->postgres
-clave->postgres
+usuario->postgres1
+clave->postgres1
 
 usuario->raul
 pwd->raul
