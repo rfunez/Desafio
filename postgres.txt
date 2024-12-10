@@ -1,7 +1,7 @@
 usuario->postgres1
 clave->postgres1
 
-usuario->raul
+usuario->root
 pwd->raul1
 
 BD->desafio
